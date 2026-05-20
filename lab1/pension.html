@@ -147,7 +147,7 @@
         const genderElement = document.querySelector('input[name="gender"]:checked');
 
         if (isNaN(age) || ageInput.value.trim() === '') {
-            resultArea.value = '❌ Да кто ты такой?';
+            resultArea.value = '❓ Да кто ты такой?';
             return;
         }
 
@@ -159,7 +159,7 @@
         const gender = genderElement.value;
         let message = '';
 
-        if (age < 0) {
+        if (age < 0 || age > 120) {
             message = '❓ Да кто ты такой?';
         }
         else if (age >= 0 && age <= 17) {
