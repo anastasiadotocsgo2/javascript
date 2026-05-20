@@ -20,10 +20,28 @@
             border-radius: 48px;
             padding: 40px 30px;
             max-width: 500px;
+            width: 100%;
             text-align: center;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
         }
-        h2 { color: #6B3E26; margin-bottom: 20px; }
-        a {
+        h2 {
+            color: #6B3E26;
+            margin-bottom: 20px;
+        }
+        .info {
+            color: #3D1F0F;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .example {
+            background: #FFE4E1;
+            padding: 12px;
+            border-radius: 28px;
+            font-size: 0.85rem;
+            margin: 20px 0;
+            color: #5C2E1A;
+        }
+        .main-link {
             display: inline-block;
             background: #6B3E26;
             color: white;
@@ -31,45 +49,81 @@
             padding: 12px 28px;
             border-radius: 40px;
             font-weight: bold;
-            margin: 20px 0;
+            font-size: 1.1rem;
+            margin: 15px 0;
+            transition: 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .main-link:hover {
+            background: #8B5A3A;
+            transform: scale(1.02);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: white;
+            background: #6B3E26;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: 0.2s;
         }
-        a:hover { background: #8B5A3A; }
-        .info { color: #3D1F0F; font-size: 0.9rem; }
+        .back-link:hover {
+            background: #8B5A3A;
+        }
     </style>
 </head>
 <body>
 <div class="card">
     <h2>🔢 Ввод числа больше 100</h2>
-    <p class="info">Нажмите на ссылку — нужно будет ввести число > 100</p>
-    <a href="#" id="smartLink">Получить число</a>
-    <div><a href="../index.html" style="color:#6B3E26; display:inline-block; margin-top:20px;">← Назад</a></div>
+    <div class="info">
+        Нажмите на ссылку «Получить число» — нужно будет ввести число <strong>больше 100</strong>
+    </div>
+    <div class="example">
+        ✅ Примеры: 101, 150, 1000<br>
+        ❌ 100, 50, 0 — не подходят (повторный запрос)
+    </div>
+    
+    <a href="#" id="getNumberLink" class="main-link">Получить число</a>
+    
+    <div>
+        <a href="../index.html" class="back-link">← Назад к списку</a>
+    </div>
 </div>
 
 <script>
     'use strict';
 
-    const link = document.getElementById('smartLink');
+    const link = document.getElementById('getNumberLink');
 
     function askForNumber() {
         let userInput;
         while (true) {
             userInput = prompt('Введите число, большее 100:');
+            
             if (userInput === null) {
                 return false;
             }
+            
             const number = Number(userInput);
+            
             if (!isNaN(number) && number > 100) {
                 return true;
             }
+            
             alert('❌ Ошибка! Нужно ввести число больше 100.');
         }
     }
 
     link.addEventListener('click', (event) => {
         event.preventDefault();
+        
         const success = askForNumber();
-        if (success) {
+        
+        if (success === true) {
             window.location.href = 'https://ya.ru';
         } else {
             const userConfirmed = confirm('Вы не ввели число > 100. Всё равно перейти?');

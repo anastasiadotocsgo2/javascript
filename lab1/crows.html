@@ -44,6 +44,9 @@
             cursor: pointer;
             margin-bottom: 15px;
         }
+        button:hover {
+            background: #8B5A3A;
+        }
         .back-link {
             display: inline-block;
             margin-top: 20px;
@@ -72,11 +75,12 @@
         if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
             return 'ворон';
         }
+        
         switch (lastDigit) {
             case 1: return 'ворона';
             case 2:
             case 3:
-            case 4: return 'воровы';
+            case 4: return 'вороны';
             default: return 'ворон';
         }
     }
@@ -86,10 +90,12 @@
 
     button.addEventListener('click', () => {
         let num = parseInt(input.value, 10);
+        
         if (isNaN(num) || num < 0) {
             alert('❌ Введите целое неотрицательное число!');
             return;
         }
+        
         const ending = getCrowEnding(num);
         alert(`На ветке сидит ${num} ${ending}`);
     });
