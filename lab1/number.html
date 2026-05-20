@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 3 | Ввод числа больше 100</title>
+    <style>
+        body {
+            background: #1e1e2f;
+            font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #fffaf8;
+            border-radius: 48px;
+            padding: 40px 30px;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2 { color: #6B3E26; margin-bottom: 20px; }
+        a {
+            display: inline-block;
+            background: #6B3E26;
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: 0.2s;
+        }
+        a:hover { background: #8B5A3A; }
+        .info { color: #3D1F0F; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>🔢 Ввод числа больше 100</h2>
+    <p class="info">Нажмите на ссылку — нужно будет ввести число > 100</p>
+    <a href="#" id="smartLink">Получить число</a>
+    <div><a href="../index.html" style="color:#6B3E26; display:inline-block; margin-top:20px;">← Назад</a></div>
+</div>
+
+<script>
+    'use strict';
+
+    const link = document.getElementById('smartLink');
+
+    function askForNumber() {
+        let userInput;
+        while (true) {
+            userInput = prompt('Введите число, большее 100:');
+            if (userInput === null) {
+                return false;
+            }
+            const number = Number(userInput);
+            if (!isNaN(number) && number > 100) {
+                return true;
+            }
+            alert('❌ Ошибка! Нужно ввести число больше 100.');
+        }
+    }
+
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const success = askForNumber();
+        if (success) {
+            window.location.href = 'https://ya.ru';
+        } else {
+            const userConfirmed = confirm('Вы не ввели число > 100. Всё равно перейти?');
+            if (userConfirmed) {
+                window.location.href = 'https://ya.ru';
+            }
+        }
+    });
+</script>
+</body>
+</html>

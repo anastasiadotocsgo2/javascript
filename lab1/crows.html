@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2 | Считать ворон</title>
+    <style>
+        body {
+            background: #1e1e2f;
+            font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #fffaf8;
+            border-radius: 48px;
+            padding: 35px 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h2 { color: #6B3E26; margin-bottom: 25px; }
+        input {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #FFCDBD;
+            border-radius: 40px;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #6B3E26;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #6B3E26;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>🐦 Считать ворон</h2>
+    <input type="number" id="crowCount" placeholder="Сколько ворон на ветке?" value="1">
+    <br>
+    <button id="countBtn">Посчитать</button>
+    <div><a href="../index.html" class="back-link">← Назад к списку</a></div>
+</div>
+
+<script>
+    'use strict';
+
+    function getCrowEnding(number) {
+        const lastDigit = number % 10;
+        const lastTwoDigits = number % 100;
+
+        if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+            return 'ворон';
+        }
+        switch (lastDigit) {
+            case 1: return 'ворона';
+            case 2:
+            case 3:
+            case 4: return 'воровы';
+            default: return 'ворон';
+        }
+    }
+
+    const button = document.getElementById('countBtn');
+    const input = document.getElementById('crowCount');
+
+    button.addEventListener('click', () => {
+        let num = parseInt(input.value, 10);
+        if (isNaN(num) || num < 0) {
+            alert('❌ Введите целое неотрицательное число!');
+            return;
+        }
+        const ending = getCrowEnding(num);
+        alert(`На ветке сидит ${num} ${ending}`);
+    });
+</script>
+</body>
+</html>

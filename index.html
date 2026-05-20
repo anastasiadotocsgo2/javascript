@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторные работы | JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a3b 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 248, 245, 0.96);
+            border-radius: 56px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px 35px;
+            backdrop-filter: blur(2px);
+        }
+
+        h1 {
+            color: #6B3E26;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subhead {
+            text-align: center;
+            color: #8B5A3A;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            border-bottom: 2px dashed #FFB6A3;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 8px;
+        }
+
+        .lab-section {
+            margin-bottom: 48px;
+        }
+
+        .lab-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #5C2E1A;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 7px solid #6B3E26;
+        }
+
+        .task-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .task-card {
+            background: white;
+            border-radius: 60px;
+            transition: all 0.25s ease;
+            border-left: 6px solid #6B3E26;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .task-card:hover {
+            transform: translateX(8px);
+            background: #FFF5F2;
+            border-left-width: 10px;
+        }
+
+        .task-card a {
+            display: block;
+            padding: 14px 24px;
+            text-decoration: none;
+            color: #3D1F0F;
+            font-weight: 500;
+            font-size: 1rem;
+            border-radius: 60px;
+        }
+
+        .task-number {
+            display: inline-block;
+            background: #FFD9D1;
+            color: #6B3E26;
+            border-radius: 40px;
+            padding: 2px 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 14px;
+        }
+
+        .coming-soon {
+            opacity: 0.7;
+            cursor: default;
+            background: #f0edea;
+        }
+
+        .coming-soon a {
+            cursor: default;
+            color: #a08c7a;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+            background: #f0edea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #B87A5A;
+            border-top: 1px solid #FFCDBD;
+            padding-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 24px 18px; }
+            h1 { font-size: 1.6rem; }
+            .lab-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Лабораторные работы</h1>
+    <div style="text-align: center;"><span class="subhead">JavaScript — управляющие конструкции, функции, события</span></div>
+
+    <div class="lab-section">
+        <div class="lab-title">Лабораторная работа №1</div>
+        <div class="task-grid">
+            <div class="task-card"><a href="lab1/pension.html"><span class="task-number">1.1</span> Пенсионный калькулятор</a></div>
+            <div class="task-card"><a href="lab1/crows.html"><span class="task-number">1.2</span> Считать ворон</a></div>
+            <div class="task-card"><a href="lab1/number.html"><span class="task-number">1.3</span> Ввод числа (>100)</a></div>
+            <div class="task-card"><a href="lab1/primes.html"><span class="task-number">1.4</span> Простые числа</a></div>
+            <div class="task-card"><a href="lab1/table.html"><span class="task-number">1.5</span> Генерация таблицы</a></div>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <div class="lab-title">Лабораторная работа №2</div>
+        <div class="task-grid">
+            <div class="task-card coming-soon"><a href="#"><span class="task-number">—</span> будет позже</a></div>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <div class="lab-title">Лабораторная работа №3</div>
+        <div class="task-grid">
+            <div class="task-card coming-soon"><a href="#"><span class="task-number">—</span> будет позже</a></div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        Строгий режим • Современный JavaScript • Валидация форм
+    </div>
+</div>
+</body>
+</html>
