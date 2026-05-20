@@ -39,7 +39,7 @@
             color: #3D1F0F;
             margin-bottom: 6px;
         }
-        input[type="number"], select {
+        input[type="number"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #FFCDBD;
@@ -48,7 +48,7 @@
             outline: none;
             transition: 0.2s;
         }
-        input:focus, select:focus {
+        input:focus {
             border-color: #6B3E26;
         }
         .radio-group {
@@ -78,7 +78,6 @@
         }
         button:hover {
             background: #8B5A3A;
-            transform: scale(1.01);
         }
         textarea {
             width: 100%;
@@ -89,13 +88,25 @@
             margin-top: 20px;
             resize: vertical;
             background: #FFF5F2;
+            font-family: inherit;
         }
         .back-link {
             display: inline-block;
             margin-top: 20px;
             text-decoration: none;
-            color: #6B3E26;
+            color: white;
+            background: #6B3E26;
+            padding: 8px 20px;
+            border-radius: 40px;
             font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-link:hover {
+            background: #8B5A3A;
+        }
+        .back-wrapper {
+            text-align: center;
         }
     </style>
 </head>
@@ -117,8 +128,8 @@
         <button type="submit">Рассчитать</button>
     </form>
     <textarea id="resultArea" rows="3" placeholder="Результат появится здесь..." readonly></textarea>
-    <div style="text-align: center; margin-top: 15px;">
-        <a href="../index.html" class="back-link">← Назад к списку заданий</a>
+    <div class="back-wrapper">
+        <a href="../index.html" class="back-link">← Назад к списку</a>
     </div>
 </div>
 
@@ -135,10 +146,11 @@
         const age = parseInt(ageInput.value, 10);
         const genderElement = document.querySelector('input[name="gender"]:checked');
 
-        if (isNaN(age) || age === '' || age < 0) {
-            resultArea.value = '❌ Пожалуйста, введите корректный возраст (целое число ≥ 0).';
+        if (isNaN(age) || ageInput.value.trim() === '') {
+            resultArea.value = '❌ Да кто ты такой?';
             return;
         }
+
         if (!genderElement) {
             resultArea.value = '❌ Пожалуйста, выберите ваш пол.';
             return;
@@ -147,9 +159,12 @@
         const gender = genderElement.value;
         let message = '';
 
-        if (age >= 0 && age <= 17) {
+        if (age < 0) {
+            message = '❓ Да кто ты такой?';
+        }
+        else if (age >= 0 && age <= 17) {
             message = '📚 Вам работать ещё рано — учитесь';
-        } 
+        }
         else if (gender === 'male' && age >= 18 && age <= 59) {
             message = '💼 Вам ещё работать и работать';
         }
