@@ -2,43 +2,65 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ввод числа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        a {
+            display: inline-block;
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+            border: 1px solid #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #007bff;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <a href="index.html" id="numberLink">Получить число</a>
+    <h1>Ввод числа</h1>
+    <a href="#" id="getNumberLink">Получить число</a>
 
     <script>
         'use strict';
 
-        document.getElementById('numberLink').addEventListener('click', (e) => {
-            let userInput;
-            
+        const link = document.getElementById('getNumberLink');
+
+        function askForNumber() {
             while (true) {
-                userInput = prompt('Введите число больше 100:');
+                let input = prompt("Введите число, большее 100:");
                 
-                if (userInput === null) {
-                    const shouldProceed = confirm('Вы не ввели число. Хотите перейти по ссылке?');
-                    if (!shouldProceed) {
-                        e.preventDefault();
-                    }
-                    break;
+                if (input === null) {
+                    return false;
                 }
                 
-                const number = Number(userInput);
+                let num = Number(input);
                 
-                if (!isNaN(number) && number > 100) {
-                    return;
+                if (!isNaN(num) && num > 100) {
+                    return true;
                 }
-                
-                alert('Нужно ввести число больше 100!');
             }
+        }
+
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
             
-            if (userInput === null) {
-                return;
+            const success = askForNumber();
+            
+            if (success) {
+                window.location.href = '/index.html';
+            } else {
+                const allow = confirm("Вы не ввели число больше 100. Всё равно перейти?");
+                if (allow) {
+                    window.location.href = '/index.html';
+                }
             }
-            
-            e.preventDefault();
         });
     </script>
 </body>
