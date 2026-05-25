@@ -168,7 +168,7 @@
     <script>
         'use strict';
 
-        describe("📐 pow — возведение в степень", function () {
+        describe(" pow — возведение в степень", function () {
             it("pow(2, 2) => 4", function () {
                 assert.strictEqual(pow(2, 2), 4);
             });
@@ -180,7 +180,7 @@
             });
         });
 
-        describe("🧮 sumTo — сумма от 1 до n (new Function)", function () {
+        describe(" sumTo — сумма от 1 до n (new Function)", function () {
             it("sumTo(100) => 5050", function () {
                 assert.strictEqual(sumTo(100), 5050);
             });
@@ -192,7 +192,7 @@
             });
         });
 
-        describe("📅 isLeapYear — високосный год?", function () {
+        describe(" isLeapYear — високосный год?", function () {
             it("isLeapYear(2024) => true", function () {
                 assert.isTrue(isLeapYear(2024));
             });
@@ -207,7 +207,7 @@
             });
         });
 
-        describe("➗ factorial — рекурсивный факториал (BigInt)", function () {
+        describe(" factorial — рекурсивный факториал (BigInt)", function () {
             it("factorial(0) => 1n", function () {
                 assert.strictEqual(factorial(0), 1n);
             });
@@ -222,7 +222,7 @@
             });
         });
 
-        describe("🌀 fib — числа Фибоначчи (BigInt)", function () {
+        describe(" fib — числа Фибоначчи (BigInt)", function () {
             it("fib(0) => 0n", function () {
                 assert.strictEqual(fib(0), 0n);
             });
@@ -240,7 +240,7 @@
             });
         });
 
-        describe("⚖️ compare — замыкание для сравнения", function () {
+        describe(" compare — замыкание для сравнения", function () {
             it("compare(5)(4) => false", function () {
                 assert.isFalse(compare(5)(4));
             });
@@ -252,7 +252,7 @@
             });
         });
 
-        describe("➕ sum — сумма всех аргументов (rest параметр)", function () {
+        describe(" sum — сумма всех аргументов (rest параметр)", function () {
             it("sum() => 0", function () {
                 assert.strictEqual(sum(), 0);
             });
@@ -267,7 +267,7 @@
             });
         });
 
-        describe("🔮 addBlackSpot — символ из глобального реестра", function () {
+        describe(" addBlackSpot — символ из глобального реестра", function () {
             it("addBlackSpot({}) => добавляет Symbol.for('blackSpot') = true", function () {
                 const result = addBlackSpot({});
                 const blackSpot = Symbol.for("blackSpot");
