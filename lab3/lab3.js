@@ -8,7 +8,6 @@ import { fib } from './lab2_module.js';
  * @returns {number} Дробная часть числа
  */
 export function getDecimal(num) {
-    if (Number.isInteger(num)) return 0;
     const fractional = Math.abs(num) - Math.floor(Math.abs(num));
     return Math.round(fractional * 100) / 100;
 }
