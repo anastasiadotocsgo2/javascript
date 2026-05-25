@@ -9,7 +9,10 @@ import { fib } from './lab2_module.js';
  */
 export function getDecimal(num) {
     const fractional = Math.abs(num) - Math.floor(Math.abs(num));
-    return Math.round(fractional * 100) / 100;
+    if (num >= 0 || fractional === 0) {
+        return Math.round(fractional * 100) / 100;
+    }
+    return Math.round((1 - fractional) * 100) / 100;
 }
 
 /**
