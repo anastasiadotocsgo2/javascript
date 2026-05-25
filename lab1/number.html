@@ -3,135 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 3 | Ввод числа больше 100</title>
-    <style>
-        body {
-            background: #1e1e2f;
-            font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        .card {
-            background: #fffaf8;
-            border-radius: 48px;
-            padding: 40px 30px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
-        }
-        h2 {
-            color: #6B3E26;
-            margin-bottom: 20px;
-        }
-        .info {
-            color: #3D1F0F;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-        .example {
-            background: #FFE4E1;
-            padding: 12px;
-            border-radius: 28px;
-            font-size: 0.85rem;
-            margin: 20px 0;
-            color: #5C2E1A;
-        }
-        .main-link {
-            display: inline-block;
-            background: #6B3E26;
-            color: white;
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin: 15px 0;
-            transition: 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-        .main-link:hover {
-            background: #8B5A3A;
-            transform: scale(1.02);
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 25px;
-            text-decoration: none;
-            color: white;
-            background: #6B3E26;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-        .back-link:hover {
-            background: #8B5A3A;
-        }
-    </style>
+    <title>Ввод числа</title>
 </head>
 <body>
-<div class="card">
-    <h2>🔢 Ввод числа больше 100</h2>
-    <div class="info">
-        Нажмите на ссылку «Получить число» — нужно будет ввести число <strong>больше 100</strong>
-    </div>
-    <div class="example">
-        ✅ Примеры: 101, 150, 1000<br>
-        ❌ 100, 50, 0 — не подходят (повторный запрос)
-    </div>
-    
-    <a href="#" id="getNumberLink" class="main-link">Получить число</a>
-    
-    <div>
-        <a href="../index.html" class="back-link">← Назад к списку</a>
-    </div>
-</div>
+    <a href="index.html" id="numberLink">Получить число</a>
 
-<script>
-    'use strict';
+    <script>
+        'use strict';
 
-    const link = document.getElementById('getNumberLink');
-
-    function askForNumber() {
-        let userInput;
-        while (true) {
-            userInput = prompt('Введите число, большее 100:');
+        document.getElementById('numberLink').addEventListener('click', (e) => {
+            let userInput;
+            
+            while (true) {
+                userInput = prompt('Введите число больше 100:');
+                
+                if (userInput === null) {
+                    const shouldProceed = confirm('Вы не ввели число. Хотите перейти по ссылке?');
+                    if (!shouldProceed) {
+                        e.preventDefault();
+                    }
+                    break;
+                }
+                
+                const number = Number(userInput);
+                
+                if (!isNaN(number) && number > 100) {
+                    return;
+                }
+                
+                alert('Нужно ввести число больше 100!');
+            }
             
             if (userInput === null) {
-                return false;
+                return;
             }
             
-            const number = Number(userInput);
-            
-            if (!isNaN(number) && number > 100) {
-                return true;
-            }
-            
-            alert('❌ Ошибка! Нужно ввести число больше 100.');
-        }
-    }
-
-    link.addEventListener('click', (event) => {
-        event.preventDefault();
-        
-        const success = askForNumber();
-        
-        if (success === true) {
-            window.location.href = 'https://ya.ru';
-        } else {
-            const userConfirmed = confirm('Вы не ввели число > 100. Всё равно перейти?');
-            if (userConfirmed) {
-                window.location.href = 'https://ya.ru';
-            }
-        }
-    });
-</script>
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

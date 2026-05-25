@@ -3,90 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 4 | Простые числа</title>
-    <style>
-        body {
-            background: #1e1e2f;
-            font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        .card {
-            background: #fffaf8;
-            border-radius: 48px;
-            padding: 35px 30px;
-            max-width: 700px;
-            width: 100%;
-        }
-        h2 { color: #6B3E26; text-align: center; }
-        .flex { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; justify-content: center; }
-        input { padding: 12px; border-radius: 40px; border: 2px solid #FFCDBD; width: 200px; }
-        button { background: #6B3E26; color: white; border: none; padding: 12px 24px; border-radius: 40px; cursor: pointer; font-weight: bold; }
-        .result {
-            background: #FFF5F2;
-            padding: 20px;
-            border-radius: 32px;
-            max-height: 300px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 1rem;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-    </style>
+    <title>Простые числа</title>
 </head>
 <body>
-<div class="card">
-    <h2>✨ Поиск простых чисел ✨</h2>
-    <div class="flex">
-        <input type="number" id="limit" placeholder="Введите n (n > 1)" min="2">
-        <button id="findBtn">Найти простые числа</button>
-    </div>
-    <div class="result" id="primeResult">Здесь будут простые числа...</div>
-    <div style="text-align:center; margin-top:20px;"><a href="../index.html" style="color:#6B3E26;">← Назад</a></div>
-</div>
+    <form id="primesForm">
+        <label>Введите n: <input type="number" id="n" min="2" required></label>
+        <button type="submit">Найти простые числа</button>
+    </form>
+    <div id="result"></div>
 
-<script>
-    'use strict';
+    <script>
+        'use strict';
 
-    function isPrime(n) {
-        if (n < 2) return false;
-        if (n === 2) return true;
-        if (n % 2 === 0) return false;
-        const limit = Math.sqrt(n);
-        for (let i = 3; i <= limit; i += 2) {
-            if (n % i === 0) return false;
-        }
-        return true;
-    }
-
-    document.getElementById('findBtn').addEventListener('click', () => {
-        const input = document.getElementById('limit');
-        let n = parseInt(input.value, 10);
-        const resultDiv = document.getElementById('primeResult');
-
-        if (isNaN(n) || n < 2) {
-            resultDiv.textContent = '❌ Введите целое число больше 1.';
-            return;
-        }
-
-        const primes = [];
-        for (let i = 2; i <= n; i++) {
-            if (isPrime(i)) {
-                primes.push(i);
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
             }
+            return true;
         }
 
-        if (primes.length === 0) {
-            resultDiv.textContent = 'Простых чисел не найдено.';
-        } else {
-            resultDiv.textContent = `🔢 Простые числа от 2 до ${n}:\n${primes.join(', ')}`;
-        }
-    });
-</script>
+        document.getElementById('primesForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const n = parseInt(document.getElementById('n').value);
+            const primes = [];
+            
+            for (let i = 2; i <= n; i++) {
+                if (isPrime(i)) {
+                    primes.push(i);
+                }
+            }
+            
+            document.getElementById('result').innerHTML = primes.length > 0 
+                ? `Простые числа от 2 до ${n}: ${primes.join(', ')}`
+                : `Нет простых чисел в интервале от 2 до ${n}`;
+        });
+    </script>
 </body>
 </html>
