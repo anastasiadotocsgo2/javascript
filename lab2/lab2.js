@@ -7,12 +7,12 @@
  * @returns {number} Результат возведения в степень
  */
 function pow(x, n) {
-    return Math.pow(x, n);
+    return x ** n;
 }
 
 /**
  * Вычисляет сумму чисел от 1 до n включительно
- * Создана с помощью синтаксиса new Function
+ * Создана с помощью синтаксиса new Function (согласно заданию)
  * @param {number} n - Натуральное число
  * @returns {number} Сумма чисел от 1 до n
  */
@@ -59,7 +59,7 @@ function fib(n) {
     let curr = 1n;
     
     for (let i = 2; i <= n; i++) {
-        let next = prev + curr;
+        const next = prev + curr;
         prev = curr;
         curr = next;
     }
@@ -70,13 +70,10 @@ function fib(n) {
 /**
  * Создаёт функцию сравнения с заданным значением x
  * @param {number} x - Базовое значение для сравнения
- * @returns {Function} Анонимная функция, принимающая y и возвращающая:
- *                     true, если y > x
- *                     false, если y < x
- *                     null, если y === x
+ * @returns {Function} Анонимная функция, принимающая y
  */
 function compare(x) {
-    return function(y) {
+    return (y) => {
         if (y > x) return true;
         if (y < x) return false;
         return null;
@@ -102,7 +99,7 @@ function sum(...args) {
  * @returns {Object} Тот же объект с добавленным символьным свойством
  */
 function addBlackSpot(obj) {
-    const blackSpotSymbol = Symbol.for("blackSpot");
+    const blackSpotSymbol = Symbol.for('blackSpot');
     obj[blackSpotSymbol] = true;
     return obj;
 }
