@@ -32,8 +32,8 @@
 
         const link = document.getElementById('getNumberLink');
         
-        // Базовый путь к репозиторию javascript
-        const baseUrl = '/javascript/';
+        // Относительный путь к папке javascript и файлу index.html
+        const targetPath = 'javascript/index.html';
 
         function askForNumber() {
             while (true) {
@@ -52,7 +52,7 @@
         }
 
         function redirectToIndex() {
-            window.location.href = baseUrl + 'index.html';
+            window.location.href = targetPath;
         }
 
         link.addEventListener('click', function(event) {
