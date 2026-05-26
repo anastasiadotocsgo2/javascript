@@ -32,8 +32,8 @@
 
         const link = document.getElementById('getNumberLink');
         
-        // Относительный путь к папке javascript и файлу index.html
-        const targetPath = 'javascript/index.html';
+        // Абсолютный путь к вашему репозиторию JavaScript на GitHub Pages
+        const targetUrl = 'https://anastasiadotocsgo2.github.io/javascript/';
 
         function askForNumber() {
             while (true) {
@@ -52,7 +52,7 @@
         }
 
         function redirectToIndex() {
-            window.location.href = targetPath;
+            window.location.href = targetUrl;
         }
 
         link.addEventListener('click', function(event) {
