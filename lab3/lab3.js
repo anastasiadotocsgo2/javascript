@@ -1,6 +1,6 @@
 'use strict';
 
-import { fib } from './lab2_module.js';
+import { fib } from '../lab3/lab2_module.js';
 
 /**
  * Возвращает дробную часть числа
@@ -8,11 +8,8 @@ import { fib } from './lab2_module.js';
  * @returns {number} Дробная часть числа
  */
 export function getDecimal(num) {
-    const fractional = Math.abs(num) - Math.floor(Math.abs(num));
-    if (num >= 0 || fractional === 0) {
-        return Math.round(fractional * 100) / 100;
-    }
-    return Math.round((1 - fractional) * 100) / 100;
+    const fractional = num - Math.floor(num);
+    return Math.round(fractional * 100) / 100;
 }
 
 /**
@@ -49,11 +46,6 @@ export function truncate(str, maxlength) {
     return str.slice(0, maxlength - 1) + '…';
 }
 
-/**
- * Делает первую букву строки заглавной
- * @param {string} str - Исходная строка
- * @returns {string} Строка с заглавной первой буквой
- */
 function ucFirst(str) {
     if (!str) return str;
     return str[0].toUpperCase() + str.slice(1);
@@ -65,11 +57,11 @@ function ucFirst(str) {
  * @returns {string} Преобразованная строка в camelCase
  */
 export function camelize(str) {
-    const parts = str.split('-');
-    for (let i = 1; i < parts.length; i++) {
-        parts[i] = ucFirst(parts[i]);
+    const words = str.split('-');
+    for (let i = 1; i < words.length; i++) {
+        words[i] = ucFirst(words[i]);
     }
-    return parts.join('');
+    return words.join('');
 }
 
 /**
@@ -86,9 +78,9 @@ export function fibs(n) {
 }
 
 /**
- * Возвращает новый массив чисел, отсортированный по убыванию, не изменяя исходный
- * @param {number[]} arr - Исходный массив чисел
- * @returns {number[]} Новый массив чисел, отсортированный по убыванию
+ * Возвращает новый массив, отсортированный по убыванию, не изменяя исходный
+ * @param {Array} arr - Исходный массив чисел
+ * @returns {Array} Новый массив, отсортированный по убыванию
  */
 export function arrReverseSorted(arr) {
     return [...arr].sort((a, b) => b - a);
@@ -96,8 +88,8 @@ export function arrReverseSorted(arr) {
 
 /**
  * Возвращает массив уникальных значений из исходного массива
- * @param {any[]} arr - Исходный массив с возможными повторениями
- * @returns {any[]} Массив уникальных значений
+ * @param {Array} arr - Исходный массив с возможными повторениями
+ * @returns {Array} Массив уникальных значений
  */
 export function unique(arr) {
     return [...new Set(arr)];
