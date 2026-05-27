@@ -53,15 +53,15 @@
             formatDate
         } from './lab4.js';
 
-        const book1 = new Book("Война и мир", 1869, 500);
+        const book1 = new Book("Мастер и Маргарита", 1967, 550);
         book1.show();
 
-        const book2 = new Book("Преступление и наказание", 1866, 450);
+        const book2 = new Book("Тихий Дон", 1940, 480);
         console.log(`До изменения: ${book2.title}, ${book2.pubYear}, ${book2.price}`);
 
-        book2.title = "Идиот";
-        book2.pubYear = 1868;
-        book2.price = 600;
+        book2.title = "Доктор Живаго";
+        book2.pubYear = 1957;
+        book2.price = 620;
         console.log(`После изменения: ${book2.title}, ${book2.pubYear}, ${book2.price}`);
 
         try {
@@ -71,7 +71,7 @@
         }
 
         try {
-            book2.pubYear = -2020;
+            book2.pubYear = -1957;
         } catch(e) {
             console.log(e.message);
         }
@@ -83,9 +83,9 @@
         }
 
         const books = [
-            new Book("Книга 1", 2000, 300),
-            new Book("Книга 2", 1995, 250),
-            new Book("Книга 3", 2010, 400)
+            new Book("Евгений Онегин", 1833, 350),
+            new Book("Герой нашего времени", 1840, 320),
+            new Book("Мертвые души", 1842, 400)
         ];
 
         console.log("До сортировки:");
@@ -110,9 +110,10 @@
         console.log(obj.className);
 
         const testObj = {
-            name: "Тест",
-            nested: {
-                value: 123
+            name: "Литература",
+            author: {
+                name: "Пушкин",
+                year: 1799
             }
         };
 
