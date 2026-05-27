@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа №4</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 32px;
+            padding: 25px 30px;
+            box-shadow: 0 12px 28px rgba(255, 105, 180, 0.15);
+        }
+
+        h1 {
+            color: #b14a6b;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            text-align: center;
+            color: #e87a9c;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Лабораторная работа №4</h1>
+        <div class="info">Откройте консоль (F12) для просмотра результатов</div>
+    </div>
+
+    <script type="module">
+        import {
+            Book,
+            isEmpty,
+            addClassMethods,
+            getSecondsToday,
+            formatDate
+        } from './lab4.js';
+
+        const book1 = new Book("Война и мир", 1869, 500);
+        book1.show();
+
+        const book2 = new Book("Преступление и наказание", 1866, 450);
+        console.log(`До изменения: ${book2.title}, ${book2.pubYear}, ${book2.price}`);
+
+        book2.title = "Идиот";
+        book2.pubYear = 1868;
+        book2.price = 600;
+        console.log(`После изменения: ${book2.title}, ${book2.pubYear}, ${book2.price}`);
+
+        try {
+            book2.title = "";
+        } catch(e) {
+            console.log(e.message);
+        }
+
+        try {
+            book2.pubYear = -2020;
+        } catch(e) {
+            console.log(e.message);
+        }
+
+        try {
+            book2.price = -100;
+        } catch(e) {
+            console.log(e.message);
+        }
+
+        const books = [
+            new Book("Книга 1", 2000, 300),
+            new Book("Книга 2", 1995, 250),
+            new Book("Книга 3", 2010, 400)
+        ];
+
+        console.log("До сортировки:");
+        books.forEach(book => console.log(`${book.title} - ${book.pubYear}`));
+
+        books.sort(Book.compare);
+
+        console.log("После сортировки:");
+        books.forEach(book => console.log(`${book.title} - ${book.pubYear}`));
+
+        console.log(isEmpty({}));
+        console.log(isEmpty({ [Symbol()]: true }));
+        console.log(isEmpty(Object.defineProperty({}, 'name', { value: 'John' })));
+
+        let obj = { className: 'open menu' };
+        obj = addClassMethods(obj);
+
+        obj.addClass('new').addClass('open').addClass('active');
+        console.log(obj.className);
+
+        obj.removeClass('menu').removeClass('active');
+        console.log(obj.className);
+
+        const testObj = {
+            name: "Тест",
+            nested: {
+                value: 123
+            }
+        };
+
+        const json = JSON.stringify(testObj, null, 2);
+        console.log(json);
+
+        const obj2 = JSON.parse(json);
+        console.log(JSON.stringify(testObj) === JSON.stringify(obj2));
+
+        console.log(getSecondsToday());
+
+        console.log(formatDate(new Date()));
+    </script>
+</body>
+</html>
