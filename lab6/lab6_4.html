@@ -4,31 +4,101 @@
     <meta charset="UTF-8">
     <title>Редактируемая таблица</title>
     <style>
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
         table {
             border-collapse: collapse;
             margin: 20px;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(232, 122, 156, 0.15);
         }
+
         td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            min-width: 100px;
+            border: 1px solid #ffe0e8;
+            padding: 15px;
+            min-width: 120px;
             cursor: pointer;
+            text-align: center;
+            color: #5a3a2a;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
+
+        td:hover {
+            background: #fff0f5;
+            color: #e87a9c;
+        }
+
         .editing {
-            background-color: #ffffcc;
+            background-color: #ffe0e8;
+            padding: 10px;
         }
+
         textarea {
             width: 100%;
             margin: 0;
-            padding: 0;
+            padding: 10px;
             resize: none;
             box-sizing: border-box;
+            border: 2px solid #e87a9c;
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #5a3a2a;
+            background: white;
+            outline: none;
         }
+
+        textarea:focus {
+            border-color: #b14a6b;
+            box-shadow: 0 0 0 3px rgba(232, 122, 156, 0.2);
+        }
+
         .edit-controls {
-            margin-top: 5px;
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
         }
+
         .edit-controls button {
-            margin-right: 5px;
+            padding: 6px 18px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .edit-controls button:first-child {
+            background: #e87a9c;
+            color: white;
+        }
+
+        .edit-controls button:first-child:hover {
+            background: #b14a6b;
+            transform: scale(1.02);
+        }
+
+        .edit-controls button:last-child {
+            background: #ffe0e8;
+            color: #b14a6b;
+        }
+
+        .edit-controls button:last-child:hover {
+            background: #ffd0dc;
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -44,7 +114,7 @@
             <td>Ячейка 5</td>
             <td>Ячейка 6</td>
         </tr>
-    </table>
+    瞄准
 
     <script>
         'use strict';

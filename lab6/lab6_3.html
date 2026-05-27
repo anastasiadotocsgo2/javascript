@@ -4,25 +4,82 @@
     <meta charset="UTF-8">
     <title>Редактируемый div</title>
     <style>
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
         .editable-div {
-            width: 300px;
-            min-height: 100px;
-            border: 1px solid #ccc;
-            padding: 10px;
+            width: 350px;
+            min-height: 120px;
+            border: 2px solid #e87a9c;
+            border-radius: 24px;
+            padding: 20px;
             margin: 20px;
             background: white;
+            color: #5a3a2a;
+            font-size: 16px;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(232, 122, 156, 0.15);
+            transition: all 0.3s ease;
         }
+
+        .editable-div:hover {
+            border-color: #b14a6b;
+            box-shadow: 0 12px 28px rgba(232, 122, 156, 0.2);
+        }
+
         textarea {
             width: 100%;
-            height: 100px;
+            height: 120px;
             margin: 0;
-            padding: 0;
+            padding: 12px;
             box-sizing: border-box;
+            border: 2px solid #e87a9c;
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 16px;
+            color: #5a3a2a;
+            resize: none;
+            outline: none;
+            background: #fffafc;
+        }
+
+        textarea:focus {
+            border-color: #b14a6b;
+            box-shadow: 0 0 0 3px rgba(232, 122, 156, 0.2);
+        }
+
+        .shortcut-hint {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #e87a9c;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(232, 122, 156, 0.1);
+        }
+
+        .container {
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div id="myDiv" class="editable-div">Это редактируемый текст. Нажмите Ctrl+E для редактирования.</div>
+    <div class="container">
+        <div id="myDiv" class="editable-div">Это редактируемый текст. Нажмите Ctrl+E для редактирования.</div>
+        <div class="shortcut-hint">
+            ✨ Ctrl+E — редактировать | Ctrl+S — сохранить | Esc — отменить
+        </div>
+    </div>
 
     <script>
         'use strict';

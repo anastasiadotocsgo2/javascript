@@ -3,12 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Select</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        select {
+            background: white;
+            border: 2px solid #e87a9c;
+            border-radius: 40px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #b14a6b;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(232, 122, 156, 0.2);
+        }
+
+        select:hover {
+            border-color: #b14a6b;
+            box-shadow: 0 6px 16px rgba(232, 122, 156, 0.3);
+            transform: scale(1.02);
+        }
+
+        select:focus {
+            border-color: #b14a6b;
+            box-shadow: 0 0 0 3px rgba(232, 122, 156, 0.3);
+        }
+
+        option {
+            background: white;
+            color: #5a3a2a;
+            padding: 10px;
+        }
+
+        .info {
+            margin-top: 30px;
+            background: white;
+            border-radius: 60px;
+            padding: 15px 25px;
+            box-shadow: 0 8px 20px rgba(232, 122, 156, 0.15);
+            text-align: center;
+        }
+
+        .info p {
+            margin: 5px 0;
+            color: #b14a6b;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <select id="musicSelect">
         <option value="Rock">Рок</option>
         <option value="Blues" selected>Блюз</option>
     </select>
+
+    <div class="info">
+        <p>Результат в консоли (F12)</p>
+    </div>
 
     <script>
         'use strict';
